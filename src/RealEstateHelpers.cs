@@ -7,25 +7,25 @@ namespace RealEstate
 {
 	public static class RealEstateHelpers
 	{
-		public static RealEstateObjectViewModel ToViewModel(this RealEstateObject obj) => new RealEstateObjectViewModel {
-			Object = obj,
-			ImageUrl = $"/assets/objectimages/object-{obj.Id}.jpg"
+		public static PropertyViewModel ToViewModel(this Property property) => new PropertyViewModel {
+			Property = property,
+			ImageUrl = $"/assets/propertyimages/property-{property.Id}.jpg"
 		};
 
-		internal static List<RealEstateObject> CreateRealEstateObjects()
+		internal static List<Property> CreateProperties()
 		{
-			var data = new List<RealEstateObject>();
+			var data = new List<Property>();
 
 			for (int i = 1; i < 100; i++)
 			{
-				data.Add(new RealEstateObject
+				data.Add(new Property
 				{
-					Name = "Object " + i,
+					Name = "Property " + i,
 					NumberOfBathrooms = i,
 					NumberOfBedrooms = i + 1,
 					Id = i,
 					Price = i * 10000,
-					Description = "This is a beautiful object. Look at its ID of " + i,
+					Description = "This is a beautiful property. Look at its ID of " + i,
 					LastUpdatedUtc = DateTimeOffset.UtcNow.AddDays(-i)
 				});
 			}

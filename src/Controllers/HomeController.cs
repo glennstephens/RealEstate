@@ -20,24 +20,24 @@ namespace RealEstate.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Index()
 		{
-			var featuredObjects = await _repo.GetFeaturedObjects();
+			var featuredProperties = await _repo.GetFeaturedProperties();
 
             var vm = new HomeViewModel
 			{
 				ShowMasterHeader = true,
-				FeaturedObjects = featuredObjects.Select(r => r.ToViewModel()).ToList()
+				FeaturedProperties = featuredProperties.Select(r => r.ToViewModel()).ToList()
             };
 
 			return View(vm);
 		}
 
-		[HttpGet("objectdetailsmodal/{objectId}", Name = "ObjectDetailsRoute")]
-		public async Task<ActionResult> ObjectDetailsPartial(int objectId)
+		[HttpGet("propertydetailsmodal/{propertyId}", Name = "PropertyDetailsRoute")]
+		public async Task<ActionResult> PropertyDetailsPartial(int propertyId)
 		{
-			var objectDetails = await _repo.GetObjectDetails(objectId);
+			var propertyDetails = await _repo.GetPropertyDetails(propertyId);
 
-			var vm = objectDetails.ToViewModel();
-			return PartialView("_ObjectDetailsModal", vm);
+			var vm = propertyDetails.ToViewModel();
+			return PartialView("_PropertyDetailsModal", vm);
 		}
 
 		public IActionResult Privacy()

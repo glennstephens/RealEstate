@@ -1,4 +1,4 @@
-﻿@model RealEstate.Models.RealEstateObjectViewModel
+﻿@model RealEstate.Models.PropertyViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">@Model.Object.Name</h2>
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">@Model.Property.Name</h2>
                 <!-- Icon Divider -->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -22,12 +22,12 @@
                 <img class="img-fluid rounded mb-5" src="@Model.ImageUrl" alt="">
                 <!-- Portfolio Modal - Text -->
                 <p>
-                    Number of bathrooms: @Model.Object.NumberOfBathrooms<br />
-                    Number of bedrooms: @Model.Object.NumberOfBedrooms<br />
-                    <b>Price: @Model.Object.Price</b>
+                    Number of bathrooms: @Model.Property.NumberOfBathrooms<br />
+                    Number of bedrooms: @Model.Property.NumberOfBedrooms<br />
+                    <b>Price: @Model.Property.Price</b>
                 </p>
                 <p class="mb-5">
-                    @Model.Object.Description
+                    @Model.Property.Description
                 </p>
             </div>
         </div>

@@ -17,34 +17,34 @@ namespace RealEstate.Services
 
 		readonly ApplicationDbContext _context;
 
-		public async Task<List<RealEstateObject>> GetFeaturedObjects()
+		public async Task<List<Property>> GetFeaturedProperties()
 		{
-			var topObjects = await _context
-				.RealEstateObjects
+			var topProperties = await _context
+				.Properties
 				.OrderByDescending(r => r.LastUpdatedUtc)
 				.Take(6)
 				.ToListAsync();
 
-			return topObjects;
+			return topProperties;
 		}
 
-		public async Task<RealEstateObject> GetObjectDetails(int objectId)
+		public async Task<Property> GetPropertyDetails(int propertyId)
 		{
-			var objectDetails = await _context
-				.RealEstateObjects
-				.FirstOrDefaultAsync(r => r.Id == objectId);
+			var propertyDetails = await _context
+				.Properties
+				.FirstOrDefaultAsync(r => r.Id == propertyId);
 
-			return objectDetails;
+			return propertyDetails;
 		}
 
-		public async Task<List<RealEstateObject>> GetAllObjects()
+		public async Task<List<Property>> GetAllProperties()
 		{
-			var objects = await _context
-				.RealEstateObjects
+			var properties = await _context
+				.Properties
 				.OrderByDescending(r => r.LastUpdatedUtc)
 				.ToListAsync();
 
-			return objects;
+			return properties;
 		}
 	}
 }

@@ -186,7 +186,7 @@ namespace RealEstate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("RealEstate.Entities.RealEstateObject", b =>
+            modelBuilder.Entity("RealEstate.Entities.Property", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,14 +204,14 @@ namespace RealEstate.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RealEstateObjects");
+                    b.ToTable("Properties");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 18, 13, 57, 53, 279, DateTimeKind.Unspecified).AddTicks(9838), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 1",
+                            Name = "Property 1",
                             NumberOfBathrooms = 1,
                             NumberOfBedrooms = 2,
                             Price = 10000f
@@ -220,7 +220,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 2,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 17, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1351), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 2",
+                            Name = "Property 2",
                             NumberOfBathrooms = 2,
                             NumberOfBedrooms = 3,
                             Price = 20000f
@@ -229,7 +229,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 3,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 16, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1360), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 3",
+                            Name = "Property 3",
                             NumberOfBathrooms = 3,
                             NumberOfBedrooms = 4,
                             Price = 30000f
@@ -238,7 +238,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 4,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 15, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1362), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 4",
+                            Name = "Property 4",
                             NumberOfBathrooms = 4,
                             NumberOfBedrooms = 5,
                             Price = 40000f
@@ -247,7 +247,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 5,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 14, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1363), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 5",
+                            Name = "Property 5",
                             NumberOfBathrooms = 5,
                             NumberOfBedrooms = 6,
                             Price = 50000f
@@ -256,7 +256,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 6,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 13, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1367), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 6",
+                            Name = "Property 6",
                             NumberOfBathrooms = 6,
                             NumberOfBedrooms = 7,
                             Price = 60000f
@@ -265,7 +265,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 7,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 12, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1368), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 7",
+                            Name = "Property 7",
                             NumberOfBathrooms = 7,
                             NumberOfBedrooms = 8,
                             Price = 70000f
@@ -274,7 +274,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 8,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 11, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1369), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 8",
+                            Name = "Property 8",
                             NumberOfBathrooms = 8,
                             NumberOfBedrooms = 9,
                             Price = 80000f
@@ -283,7 +283,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 9,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 10, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1371), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 9",
+                            Name = "Property 9",
                             NumberOfBathrooms = 9,
                             NumberOfBedrooms = 10,
                             Price = 90000f
@@ -292,7 +292,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 10,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 9, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1373), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 10",
+                            Name = "Property 10",
                             NumberOfBathrooms = 10,
                             NumberOfBedrooms = 11,
                             Price = 100000f
@@ -301,7 +301,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 11,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 8, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1374), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 11",
+                            Name = "Property 11",
                             NumberOfBathrooms = 11,
                             NumberOfBedrooms = 12,
                             Price = 110000f
@@ -310,7 +310,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 12,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 7, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1375), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 12",
+                            Name = "Property 12",
                             NumberOfBathrooms = 12,
                             NumberOfBedrooms = 13,
                             Price = 120000f
@@ -319,7 +319,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 13,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 6, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1376), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 13",
+                            Name = "Property 13",
                             NumberOfBathrooms = 13,
                             NumberOfBedrooms = 14,
                             Price = 130000f
@@ -328,7 +328,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 14,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 5, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1378), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 14",
+                            Name = "Property 14",
                             NumberOfBathrooms = 14,
                             NumberOfBedrooms = 15,
                             Price = 140000f
@@ -337,7 +337,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 15,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 4, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1379), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 15",
+                            Name = "Property 15",
                             NumberOfBathrooms = 15,
                             NumberOfBedrooms = 16,
                             Price = 150000f
@@ -346,7 +346,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 16,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 3, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1380), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 16",
+                            Name = "Property 16",
                             NumberOfBathrooms = 16,
                             NumberOfBedrooms = 17,
                             Price = 160000f
@@ -355,7 +355,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 17,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 2, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1381), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 17",
+                            Name = "Property 17",
                             NumberOfBathrooms = 17,
                             NumberOfBedrooms = 18,
                             Price = 170000f
@@ -364,7 +364,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 18,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 7, 1, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1484), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 18",
+                            Name = "Property 18",
                             NumberOfBathrooms = 18,
                             NumberOfBedrooms = 19,
                             Price = 180000f
@@ -373,7 +373,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 19,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 30, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1486), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 19",
+                            Name = "Property 19",
                             NumberOfBathrooms = 19,
                             NumberOfBedrooms = 20,
                             Price = 190000f
@@ -382,7 +382,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 20,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 29, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1487), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 20",
+                            Name = "Property 20",
                             NumberOfBathrooms = 20,
                             NumberOfBedrooms = 21,
                             Price = 200000f
@@ -391,7 +391,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 21,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 28, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1489), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 21",
+                            Name = "Property 21",
                             NumberOfBathrooms = 21,
                             NumberOfBedrooms = 22,
                             Price = 210000f
@@ -400,7 +400,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 22,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 27, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1490), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 22",
+                            Name = "Property 22",
                             NumberOfBathrooms = 22,
                             NumberOfBedrooms = 23,
                             Price = 220000f
@@ -409,7 +409,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 23,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 26, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1491), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 23",
+                            Name = "Property 23",
                             NumberOfBathrooms = 23,
                             NumberOfBedrooms = 24,
                             Price = 230000f
@@ -418,7 +418,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 24,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 25, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1492), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 24",
+                            Name = "Property 24",
                             NumberOfBathrooms = 24,
                             NumberOfBedrooms = 25,
                             Price = 240000f
@@ -427,7 +427,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 25,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 24, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1493), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 25",
+                            Name = "Property 25",
                             NumberOfBathrooms = 25,
                             NumberOfBedrooms = 26,
                             Price = 250000f
@@ -436,7 +436,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 26,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 23, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1494), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 26",
+                            Name = "Property 26",
                             NumberOfBathrooms = 26,
                             NumberOfBedrooms = 27,
                             Price = 260000f
@@ -445,7 +445,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 27,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 22, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1495), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 27",
+                            Name = "Property 27",
                             NumberOfBathrooms = 27,
                             NumberOfBedrooms = 28,
                             Price = 270000f
@@ -454,7 +454,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 28,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 21, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1497), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 28",
+                            Name = "Property 28",
                             NumberOfBathrooms = 28,
                             NumberOfBedrooms = 29,
                             Price = 280000f
@@ -463,7 +463,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 29,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 20, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1498), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 29",
+                            Name = "Property 29",
                             NumberOfBathrooms = 29,
                             NumberOfBedrooms = 30,
                             Price = 290000f
@@ -472,7 +472,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 30,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 19, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1499), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 30",
+                            Name = "Property 30",
                             NumberOfBathrooms = 30,
                             NumberOfBedrooms = 31,
                             Price = 300000f
@@ -481,7 +481,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 31,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 18, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1500), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 31",
+                            Name = "Property 31",
                             NumberOfBathrooms = 31,
                             NumberOfBedrooms = 32,
                             Price = 310000f
@@ -490,7 +490,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 32,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 17, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1501), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 32",
+                            Name = "Property 32",
                             NumberOfBathrooms = 32,
                             NumberOfBedrooms = 33,
                             Price = 320000f
@@ -499,7 +499,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 33,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 16, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1502), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 33",
+                            Name = "Property 33",
                             NumberOfBathrooms = 33,
                             NumberOfBedrooms = 34,
                             Price = 330000f
@@ -508,7 +508,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 34,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 15, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1504), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 34",
+                            Name = "Property 34",
                             NumberOfBathrooms = 34,
                             NumberOfBedrooms = 35,
                             Price = 340000f
@@ -517,7 +517,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 35,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 14, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1505), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 35",
+                            Name = "Property 35",
                             NumberOfBathrooms = 35,
                             NumberOfBedrooms = 36,
                             Price = 350000f
@@ -526,7 +526,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 36,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 13, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1506), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 36",
+                            Name = "Property 36",
                             NumberOfBathrooms = 36,
                             NumberOfBedrooms = 37,
                             Price = 360000f
@@ -535,7 +535,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 37,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 12, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1508), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 37",
+                            Name = "Property 37",
                             NumberOfBathrooms = 37,
                             NumberOfBedrooms = 38,
                             Price = 370000f
@@ -544,7 +544,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 38,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 11, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1509), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 38",
+                            Name = "Property 38",
                             NumberOfBathrooms = 38,
                             NumberOfBedrooms = 39,
                             Price = 380000f
@@ -553,7 +553,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 39,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 10, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1510), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 39",
+                            Name = "Property 39",
                             NumberOfBathrooms = 39,
                             NumberOfBedrooms = 40,
                             Price = 390000f
@@ -562,7 +562,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 40,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 9, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1511), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 40",
+                            Name = "Property 40",
                             NumberOfBathrooms = 40,
                             NumberOfBedrooms = 41,
                             Price = 400000f
@@ -571,7 +571,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 41,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 8, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1512), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 41",
+                            Name = "Property 41",
                             NumberOfBathrooms = 41,
                             NumberOfBedrooms = 42,
                             Price = 410000f
@@ -580,7 +580,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 42,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 7, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1513), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 42",
+                            Name = "Property 42",
                             NumberOfBathrooms = 42,
                             NumberOfBedrooms = 43,
                             Price = 420000f
@@ -589,7 +589,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 43,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 6, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1514), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 43",
+                            Name = "Property 43",
                             NumberOfBathrooms = 43,
                             NumberOfBedrooms = 44,
                             Price = 430000f
@@ -598,7 +598,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 44,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 5, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1515), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 44",
+                            Name = "Property 44",
                             NumberOfBathrooms = 44,
                             NumberOfBedrooms = 45,
                             Price = 440000f
@@ -607,7 +607,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 45,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 4, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1516), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 45",
+                            Name = "Property 45",
                             NumberOfBathrooms = 45,
                             NumberOfBedrooms = 46,
                             Price = 450000f
@@ -616,7 +616,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 46,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 3, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1518), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 46",
+                            Name = "Property 46",
                             NumberOfBathrooms = 46,
                             NumberOfBedrooms = 47,
                             Price = 460000f
@@ -625,7 +625,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 47,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 2, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1519), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 47",
+                            Name = "Property 47",
                             NumberOfBathrooms = 47,
                             NumberOfBedrooms = 48,
                             Price = 470000f
@@ -634,7 +634,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 48,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 6, 1, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1520), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 48",
+                            Name = "Property 48",
                             NumberOfBathrooms = 48,
                             NumberOfBedrooms = 49,
                             Price = 480000f
@@ -643,7 +643,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 49,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 31, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1521), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 49",
+                            Name = "Property 49",
                             NumberOfBathrooms = 49,
                             NumberOfBedrooms = 50,
                             Price = 490000f
@@ -652,7 +652,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 50,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 30, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1522), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 50",
+                            Name = "Property 50",
                             NumberOfBathrooms = 50,
                             NumberOfBedrooms = 51,
                             Price = 500000f
@@ -661,7 +661,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 51,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 29, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1523), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 51",
+                            Name = "Property 51",
                             NumberOfBathrooms = 51,
                             NumberOfBedrooms = 52,
                             Price = 510000f
@@ -670,7 +670,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 52,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 28, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1524), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 52",
+                            Name = "Property 52",
                             NumberOfBathrooms = 52,
                             NumberOfBedrooms = 53,
                             Price = 520000f
@@ -679,7 +679,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 53,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 27, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1525), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 53",
+                            Name = "Property 53",
                             NumberOfBathrooms = 53,
                             NumberOfBedrooms = 54,
                             Price = 530000f
@@ -688,7 +688,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 54,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 26, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1527), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 54",
+                            Name = "Property 54",
                             NumberOfBathrooms = 54,
                             NumberOfBedrooms = 55,
                             Price = 540000f
@@ -697,7 +697,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 55,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 25, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1528), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 55",
+                            Name = "Property 55",
                             NumberOfBathrooms = 55,
                             NumberOfBedrooms = 56,
                             Price = 550000f
@@ -706,7 +706,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 56,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 24, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1529), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 56",
+                            Name = "Property 56",
                             NumberOfBathrooms = 56,
                             NumberOfBedrooms = 57,
                             Price = 560000f
@@ -715,7 +715,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 57,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 23, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1530), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 57",
+                            Name = "Property 57",
                             NumberOfBathrooms = 57,
                             NumberOfBedrooms = 58,
                             Price = 570000f
@@ -724,7 +724,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 58,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 22, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1531), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 58",
+                            Name = "Property 58",
                             NumberOfBathrooms = 58,
                             NumberOfBedrooms = 59,
                             Price = 580000f
@@ -733,7 +733,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 59,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 21, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1532), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 59",
+                            Name = "Property 59",
                             NumberOfBathrooms = 59,
                             NumberOfBedrooms = 60,
                             Price = 590000f
@@ -742,7 +742,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 60,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 20, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1533), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 60",
+                            Name = "Property 60",
                             NumberOfBathrooms = 60,
                             NumberOfBedrooms = 61,
                             Price = 600000f
@@ -751,7 +751,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 61,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 19, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1534), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 61",
+                            Name = "Property 61",
                             NumberOfBathrooms = 61,
                             NumberOfBedrooms = 62,
                             Price = 610000f
@@ -760,7 +760,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 62,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 18, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1535), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 62",
+                            Name = "Property 62",
                             NumberOfBathrooms = 62,
                             NumberOfBedrooms = 63,
                             Price = 620000f
@@ -769,7 +769,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 63,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 17, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1536), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 63",
+                            Name = "Property 63",
                             NumberOfBathrooms = 63,
                             NumberOfBedrooms = 64,
                             Price = 630000f
@@ -778,7 +778,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 64,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 16, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1537), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 64",
+                            Name = "Property 64",
                             NumberOfBathrooms = 64,
                             NumberOfBedrooms = 65,
                             Price = 640000f
@@ -787,7 +787,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 65,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 15, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1539), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 65",
+                            Name = "Property 65",
                             NumberOfBathrooms = 65,
                             NumberOfBedrooms = 66,
                             Price = 650000f
@@ -796,7 +796,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 66,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 14, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1577), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 66",
+                            Name = "Property 66",
                             NumberOfBathrooms = 66,
                             NumberOfBedrooms = 67,
                             Price = 660000f
@@ -805,7 +805,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 67,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 13, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1579), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 67",
+                            Name = "Property 67",
                             NumberOfBathrooms = 67,
                             NumberOfBedrooms = 68,
                             Price = 670000f
@@ -814,7 +814,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 68,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 12, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1580), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 68",
+                            Name = "Property 68",
                             NumberOfBathrooms = 68,
                             NumberOfBedrooms = 69,
                             Price = 680000f
@@ -823,7 +823,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 69,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 11, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1581), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 69",
+                            Name = "Property 69",
                             NumberOfBathrooms = 69,
                             NumberOfBedrooms = 70,
                             Price = 690000f
@@ -832,7 +832,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 70,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 10, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1582), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 70",
+                            Name = "Property 70",
                             NumberOfBathrooms = 70,
                             NumberOfBedrooms = 71,
                             Price = 700000f
@@ -841,7 +841,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 71,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 9, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1583), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 71",
+                            Name = "Property 71",
                             NumberOfBathrooms = 71,
                             NumberOfBedrooms = 72,
                             Price = 710000f
@@ -850,7 +850,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 72,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 8, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1584), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 72",
+                            Name = "Property 72",
                             NumberOfBathrooms = 72,
                             NumberOfBedrooms = 73,
                             Price = 720000f
@@ -859,7 +859,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 73,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 7, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1585), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 73",
+                            Name = "Property 73",
                             NumberOfBathrooms = 73,
                             NumberOfBedrooms = 74,
                             Price = 730000f
@@ -868,7 +868,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 74,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 6, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1586), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 74",
+                            Name = "Property 74",
                             NumberOfBathrooms = 74,
                             NumberOfBedrooms = 75,
                             Price = 740000f
@@ -877,7 +877,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 75,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 5, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1587), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 75",
+                            Name = "Property 75",
                             NumberOfBathrooms = 75,
                             NumberOfBedrooms = 76,
                             Price = 750000f
@@ -886,7 +886,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 76,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 4, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1589), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 76",
+                            Name = "Property 76",
                             NumberOfBathrooms = 76,
                             NumberOfBedrooms = 77,
                             Price = 760000f
@@ -895,7 +895,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 77,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 3, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1590), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 77",
+                            Name = "Property 77",
                             NumberOfBathrooms = 77,
                             NumberOfBedrooms = 78,
                             Price = 770000f
@@ -904,7 +904,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 78,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 2, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1591), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 78",
+                            Name = "Property 78",
                             NumberOfBathrooms = 78,
                             NumberOfBedrooms = 79,
                             Price = 780000f
@@ -913,7 +913,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 79,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 5, 1, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1592), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 79",
+                            Name = "Property 79",
                             NumberOfBathrooms = 79,
                             NumberOfBedrooms = 80,
                             Price = 790000f
@@ -922,7 +922,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 80,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 30, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1593), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 80",
+                            Name = "Property 80",
                             NumberOfBathrooms = 80,
                             NumberOfBedrooms = 81,
                             Price = 800000f
@@ -931,7 +931,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 81,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 29, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1594), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 81",
+                            Name = "Property 81",
                             NumberOfBathrooms = 81,
                             NumberOfBedrooms = 82,
                             Price = 810000f
@@ -940,7 +940,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 82,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 28, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1595), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 82",
+                            Name = "Property 82",
                             NumberOfBathrooms = 82,
                             NumberOfBedrooms = 83,
                             Price = 820000f
@@ -949,7 +949,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 83,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 27, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1596), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 83",
+                            Name = "Property 83",
                             NumberOfBathrooms = 83,
                             NumberOfBedrooms = 84,
                             Price = 830000f
@@ -958,7 +958,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 84,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 26, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1597), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 84",
+                            Name = "Property 84",
                             NumberOfBathrooms = 84,
                             NumberOfBedrooms = 85,
                             Price = 840000f
@@ -967,7 +967,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 85,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 25, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1598), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 85",
+                            Name = "Property 85",
                             NumberOfBathrooms = 85,
                             NumberOfBedrooms = 86,
                             Price = 850000f
@@ -976,7 +976,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 86,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 24, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1599), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 86",
+                            Name = "Property 86",
                             NumberOfBathrooms = 86,
                             NumberOfBedrooms = 87,
                             Price = 860000f
@@ -985,7 +985,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 87,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 23, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1601), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 87",
+                            Name = "Property 87",
                             NumberOfBathrooms = 87,
                             NumberOfBedrooms = 88,
                             Price = 870000f
@@ -994,7 +994,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 88,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 22, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1602), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 88",
+                            Name = "Property 88",
                             NumberOfBathrooms = 88,
                             NumberOfBedrooms = 89,
                             Price = 880000f
@@ -1003,7 +1003,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 89,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 21, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1603), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 89",
+                            Name = "Property 89",
                             NumberOfBathrooms = 89,
                             NumberOfBedrooms = 90,
                             Price = 890000f
@@ -1012,7 +1012,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 90,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 20, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1604), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 90",
+                            Name = "Property 90",
                             NumberOfBathrooms = 90,
                             NumberOfBedrooms = 91,
                             Price = 900000f
@@ -1021,7 +1021,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 91,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 19, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1605), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 91",
+                            Name = "Property 91",
                             NumberOfBathrooms = 91,
                             NumberOfBedrooms = 92,
                             Price = 910000f
@@ -1030,7 +1030,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 92,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 18, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1606), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 92",
+                            Name = "Property 92",
                             NumberOfBathrooms = 92,
                             NumberOfBedrooms = 93,
                             Price = 920000f
@@ -1039,7 +1039,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 93,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 17, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1607), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 93",
+                            Name = "Property 93",
                             NumberOfBathrooms = 93,
                             NumberOfBedrooms = 94,
                             Price = 930000f
@@ -1048,7 +1048,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 94,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 16, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1608), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 94",
+                            Name = "Property 94",
                             NumberOfBathrooms = 94,
                             NumberOfBedrooms = 95,
                             Price = 940000f
@@ -1057,7 +1057,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 95,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 15, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1609), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 95",
+                            Name = "Property 95",
                             NumberOfBathrooms = 95,
                             NumberOfBedrooms = 96,
                             Price = 950000f
@@ -1066,7 +1066,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 96,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 14, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1610), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 96",
+                            Name = "Property 96",
                             NumberOfBathrooms = 96,
                             NumberOfBedrooms = 97,
                             Price = 960000f
@@ -1075,7 +1075,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 97,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 13, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1611), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 97",
+                            Name = "Property 97",
                             NumberOfBathrooms = 97,
                             NumberOfBedrooms = 98,
                             Price = 970000f
@@ -1084,7 +1084,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 98,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 12, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1612), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 98",
+                            Name = "Property 98",
                             NumberOfBathrooms = 98,
                             NumberOfBedrooms = 99,
                             Price = 980000f
@@ -1093,7 +1093,7 @@ namespace RealEstate.Data.Migrations
                         {
                             Id = 99,
                             LastUpdatedUtc = new DateTimeOffset(new DateTime(2019, 4, 11, 13, 57, 53, 280, DateTimeKind.Unspecified).AddTicks(1614), new TimeSpan(0, 0, 0, 0, 0)),
-                            Name = "Object 99",
+                            Name = "Property 99",
                             NumberOfBathrooms = 99,
                             NumberOfBedrooms = 100,
                             Price = 990000f

@@ -5,6 +5,6 @@ namespace RealEstate.Models
 {
 	public class HomeViewModel : BaseViewModel
 	{
-		public List<RealEstateObjectViewModel> FeaturedObjects { get; set; }
+		public List<PropertyViewModel> FeaturedProperties { get; set; }
 	}
 }

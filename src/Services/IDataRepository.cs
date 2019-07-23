@@ -6,8 +6,8 @@ namespace RealEstate.Services
 {
 	public interface IDataRepository
 	{
-		Task<List<RealEstateObject>> GetFeaturedObjects();
-		Task<RealEstateObject> GetObjectDetails(int objectId);
-		Task<List<RealEstateObject>> GetAllObjects();
+		Task<List<Property>> GetFeaturedProperties();
+		Task<Property> GetPropertyDetails(int propertyId);
+		Task<List<Property>> GetAllProperties();
 	}
 }

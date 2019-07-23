@@ -1,11 +1,11 @@
-﻿@model RealEstate.Models.ObjectListViewModel
+﻿@model RealEstate.Models.PropertyListViewModel
 
 @{
-    ViewData["Title"] = "Object list";
+    ViewData["Title"] = "Property list";
 }
 
 <!-- Portfolio Section Heading -->
-<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Our objects</h2>
+<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Our properties</h2>
 
 <!-- Icon Divider -->
 <div class="divider-custom">
@@ -18,20 +18,20 @@
 
 <!-- Portfolio Grid Items -->
 <div class="row">
-    @foreach (var item in Model.Objects)
+    @foreach (var item in Model.Properties)
     {
         <div class="col-md-6 col-lg-4">
             <div class="portfolio-item mx-auto modal-content"
                  data-toggle="modal"
                  data-target="#modalContainer"
-                 data-contenturl="@Url.RouteUrl("ObjectDetailsRoute", new { objectId = item.Object.Id })">
+                 data-contenturl="@Url.RouteUrl("PropertyDetailsRoute", new { propertyId = item.Property.Id })">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white">
                         <i class="fas fa-plus fa-3x"></i>
                     </div>
                 </div>
                 <img class="img-thumbnail rounded" src="@item.ImageUrl" alt="">
-                <span class="text-center">@item.Object.Name</span>
+                <span class="text-center">@item.Property.Name</span>
             </div>
         </div>
     }
