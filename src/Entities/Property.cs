@@ -11,5 +11,10 @@ namespace RealEstate.Entities
 		public int NumberOfBathrooms { get; set; }
 		public int NumberOfBedrooms { get; set; }
 		public DateTimeOffset LastUpdatedUtc { get; set; }
+		public bool HasAirConditioning { get; set; }
+		public bool HasBroadband { get; set; }
+		public bool HasBalcony { get; set; }
+		public bool HasRemoteGarage { get; set; }
+		public bool HasFloorboards { get; set; }
 	}
 }

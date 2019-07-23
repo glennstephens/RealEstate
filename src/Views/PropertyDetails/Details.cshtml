@@ -26,10 +26,52 @@
                     Number of bedrooms: @Model.Property.NumberOfBedrooms<br />
                     <b>Price: @Model.Property.Price</b>
                 </p>
-                <p class="mb-5">
-                    @Model.Property.Description
-                </p>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    @if (Model.Property.HasAirConditioning)
+    {
+        <div class="col-auto">
+            &#10004; Air conditioning
+        </div>
+    }
+
+    @if (Model.Property.HasBalcony)
+    {
+        <div class="col-auto">
+            &#10004; Balcony
+        </div>
+    }
+
+    @if (Model.Property.HasBroadband)
+    {
+        <div class="col-auto">
+            &#10004; Broadband
+        </div>
+    }
+
+    @if (Model.Property.HasFloorboards)
+    {
+        <div class="col-auto">
+            &#10004; Floorboards
+        </div>
+    }
+
+    @if (Model.Property.HasRemoteGarage)
+    {
+        <div class="col-auto">
+            &#10004; Remote garage
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="container text-center">
+        <p class="mb-5">
+            @Model.Property.Description
+        </p>
     </div>
 </div>
