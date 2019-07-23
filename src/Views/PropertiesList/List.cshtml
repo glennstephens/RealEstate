@@ -1,4 +1,7 @@
 ﻿@model RealEstate.Models.PropertyListViewModel
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Common;
+@using X.PagedList;
 
 @{
     ViewData["Title"] = "Property list";
@@ -36,4 +39,11 @@
         </div>
     }
 </div>
-</div>
+
+@(Html.PagedListPager((IPagedList)Model.Properties,
+pageNum => Url.RouteUrl("GetProperties", new { page = pageNum, searchString = Model.SearchString, sortBy = Model.SortBy, sortAscending = Model.SortAscending }),
+new PagedListRenderOptions
+{
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" }
+}))

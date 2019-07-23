@@ -8,6 +8,6 @@ namespace RealEstate.Services
 	{
 		Task<List<Property>> GetFeaturedProperties();
 		Task<Property> GetPropertyDetails(int propertyId);
-		Task<List<Property>> GetAllProperties();
+		Task<List<Property>> GetProperties(string searchString, string sortByPropertyName, bool sortAscending);
 	}
 }

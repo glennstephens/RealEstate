@@ -3,6 +3,7 @@ using RealEstate.Models;
 using RealEstate.Services;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace RealEstate.Controllers
 {
@@ -16,14 +17,27 @@ namespace RealEstate.Controllers
 
 		readonly IDataRepository _repo;
 
-		[HttpGet("")]
-		public async Task<ActionResult> GetAllProperties()
-        {
-			var properties = await _repo.GetAllProperties();
+		[HttpGet("", Name = "GetProperties")]
+		public async Task<ActionResult> GetProperties(int? page, string searchString, string sortBy, bool sortAscending)
+		{
+			if (page == null || page <= 0)
+			{
+				page = 1;
+			}
+			var properties = await _repo.GetProperties(searchString, sortBy, sortAscending);
+
 			var vm = new PropertyListViewModel {
-				Properties = properties.Select(r => r.ToViewModel()).ToList()
+				CurrentPage = page.Value,
+				SearchString = searchString,
+				SortAscending = sortAscending,
+				SortBy = sortBy
 			};
-            return View("List", vm);
-        }
-    }
+
+			vm.Properties = properties
+				.Select(p => p.ToViewModel())
+				.ToPagedList(vm.CurrentPage, vm.ObjectsPerPage);
+
+			return View("List", vm);
+		}
+	}
 }
