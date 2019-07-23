@@ -18,16 +18,18 @@ namespace RealEstate.Controllers
 		readonly IDataRepository _repo;
 
 		[HttpGet("", Name = "GetProperties")]
-		public async Task<ActionResult> GetProperties(int? page, string searchString, string sortBy, bool sortAscending)
+		[HttpPost("", Name = "GetProperties")]
+		public async Task<ActionResult> GetProperties(int? pageNumber, string searchString, string sortBy, bool sortAscending)
 		{
-			if (page == null || page <= 0)
+			if (pageNumber == null || pageNumber <= 0)
 			{
-				page = 1;
+				pageNumber = 1;
 			}
+
 			var properties = await _repo.GetProperties(searchString, sortBy, sortAscending);
 
 			var vm = new PropertyListViewModel {
-				CurrentPage = page.Value,
+				CurrentPage = pageNumber.Value,
 				SearchString = searchString,
 				SortAscending = sortAscending,
 				SortBy = sortBy
@@ -37,6 +39,7 @@ namespace RealEstate.Controllers
 				.Select(p => p.ToViewModel())
 				.ToPagedList(vm.CurrentPage, vm.ObjectsPerPage);
 
+			ModelState.Clear();
 			return View("List", vm);
 		}
 	}
