@@ -60,8 +60,15 @@
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        @Html.ActionLink("Our properties", "GetProperties", "PropertiesList", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" } )
+                        @Html.ActionLink("Our properties", "GetProperties", "PropertiesList", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" })
                     </li>
+                    @if (User.Identities.Any(u => u.IsAuthenticated))
+                    {
+                        <li class="nav-item mx-0 mx-lg-1">
+                            @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" } )
+                        </li>
+                    }
+
                 </ul>
             </div>
         </div>

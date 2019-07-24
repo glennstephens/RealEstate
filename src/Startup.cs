@@ -14,6 +14,7 @@ using RealEstate.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace RealEstate
 {
@@ -29,6 +30,21 @@ namespace RealEstate
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+					.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+					options =>
+					{
+						options.LoginPath = new PathString("/Login/");
+						options.AccessDeniedPath = new PathString("/Forbidden/");
+					});
+
+			// setup a policy for Administrators that we can Authorize against
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("AdministratorOnly", policy => policy.RequireRole("Administrator"));
+			});
+
+
 			services.Configure<CookiePolicyOptions>(options =>
 			{
 				// This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -37,11 +53,13 @@ namespace RealEstate
 			});
 
 			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(
-					Configuration.GetConnectionString("DefaultConnection")));
-			services.AddDefaultIdentity<IdentityUser>()
-				.AddDefaultUI(UIFramework.Bootstrap4)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+			{
+				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+			});
+
+			//services.AddDefaultIdentity<IdentityUser>()
+			//	.AddDefaultUI(UIFramework.Bootstrap4)
+			//	.AddEntityFrameworkStores<ApplicationDbContext>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
