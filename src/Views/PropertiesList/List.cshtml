@@ -48,7 +48,10 @@
                         <i class="fas fa-plus fa-3x"></i>
                     </div>
                 </div>
-                <img class="img-thumbnail rounded" src="@item.ImageUrl" alt="">
+                @if (item.ThumbnailUrl != null)
+                {
+                <img class="img-thumbnail rounded" src="@item.ThumbnailUrl" alt="">
+                }
                 <span class="text-center">@item.Property.Name</span>
             </div>
         </div>

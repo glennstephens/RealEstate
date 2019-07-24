@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RealEstate.Entities
 {
@@ -16,5 +17,6 @@ namespace RealEstate.Entities
 		public bool HasBalcony { get; set; }
 		public bool HasRemoteGarage { get; set; }
 		public bool HasFloorboards { get; set; }
+		public List<PropertyAsset> Assets { get; set; }
 	}
 }

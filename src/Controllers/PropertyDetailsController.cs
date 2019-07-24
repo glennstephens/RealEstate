@@ -21,11 +21,7 @@ namespace RealEstate.Controllers
         {
 			var propertyDetails = await _repo.GetPropertyDetails(propertyId);
 
-			var vm = new PropertyViewModel
-			{
-				Property = propertyDetails,
-				ImageUrl = $"/assets/propertyimages/property-{propertyDetails.Id}.jpg"
-			};
+			var vm = propertyDetails.ToViewModel();
 
 			return View(vm);
         }

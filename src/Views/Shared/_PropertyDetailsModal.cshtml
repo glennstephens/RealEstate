@@ -14,7 +14,10 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Portfolio Modal - Image -->
-            <img class="img-fluid rounded mb-5" src="@Model.ImageUrl" alt="">
+            @if (Model.MainImageUrl != null)
+            {
+            <img class="img-fluid rounded mb-5" src="@Model.MainImageUrl" alt="">
+            }
             <!-- Portfolio Modal - Text -->
             <p>
                 <b>Price: @Model.Property.Price</b>

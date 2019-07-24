@@ -20,6 +20,7 @@ namespace RealEstate.Services
 		{
 			var topProperties = await _context
 				.Properties
+				.Include(p => p.Assets)
 				.OrderByDescending(r => r.LastUpdatedUtc)
 				.Take(6)
 				.ToListAsync();
@@ -31,6 +32,7 @@ namespace RealEstate.Services
 		{
 			var propertyDetails = await _context
 				.Properties
+				.Include(p => p.Assets)
 				.FirstOrDefaultAsync(r => r.Id == propertyId);
 
 			return propertyDetails;
@@ -40,6 +42,7 @@ namespace RealEstate.Services
 		{
 			var properties = _context
 				.Properties
+				.Include(p => p.Assets)
 				.Select(p => p);
 				
 			if (!string.IsNullOrEmpty(searchString))

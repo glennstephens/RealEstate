@@ -2,6 +2,7 @@
 using RealEstate.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RealEstate
 {
@@ -9,32 +10,50 @@ namespace RealEstate
 	{
 		public static PropertyViewModel ToViewModel(this Property property) => new PropertyViewModel {
 			Property = property,
-			ImageUrl = $"/assets/propertyimages/property-{property.Id}.jpg"
+			MainImageUrl = property.Assets.FirstOrDefault()?.ImageUrl,
+			ThumbnailUrl = property.Assets.FirstOrDefault()?.ThumbnailUrl
 		};
 
-		internal static List<Property> CreateProperties()
+		internal static (List<Property> properties, List<PropertyAsset> assets) CreateProperties()
 		{
-			var data = new List<Property>();
+			var properties = new List<Property>();
+			var assets = new List<PropertyAsset>();
 
-			for (int i = 1; i < 100; i++)
+			Property prop = null;
+			for (int propIndex = 1; propIndex <= 100; propIndex++)
 			{
-				data.Add(new Property {
-					Name = "Property " + i,
-					NumberOfBathrooms = i,
-					NumberOfBedrooms = i + 1,
-					Id = i,
-					Price = i * 10000,
-					Description = "This is a beautiful property. Look at its ID of " + i,
-					LastUpdatedUtc = DateTimeOffset.UtcNow.AddDays(-i),
-					HasAirConditioning = i % 2 == 0,
-					HasBalcony = i % 3 == 0,
-					HasBroadband = i % 5 == 0,
-					HasFloorboards = i % 7 == 0,
-					HasRemoteGarage = i % 13 == 0
-				}) ;
+				prop = new Property {
+					Name = "Property " + propIndex,
+					NumberOfBathrooms = propIndex,
+					NumberOfBedrooms = propIndex + 1,
+					Id = propIndex,
+					Price = propIndex * 10000,
+					Description = "This is a beautiful property. Look at its ID of " + propIndex,
+					LastUpdatedUtc = DateTimeOffset.UtcNow.AddDays(-propIndex),
+					HasAirConditioning = propIndex % 2 == 0,
+					HasBalcony = propIndex % 3 == 0,
+					HasBroadband = propIndex % 5 == 0,
+					HasFloorboards = propIndex % 7 == 0,
+					HasRemoteGarage = propIndex % 13 == 0,
+				};
+
+				for (int assetIndex = 1; assetIndex <= 2; assetIndex++)
+				{
+					var asset = new PropertyAsset {
+						Id = (propIndex - 1) * 2 + assetIndex,
+						//Property = prop,
+						PropertyId = prop.Id,
+						Description = $"Image {assetIndex} for property {propIndex}",
+						ImageUrl = $"/assets/demopropertyimages/property-{propIndex % 8}.jpg",
+						ThumbnailUrl = $"/assets/demopropertythumbnails/thumb-property-{propIndex % 8}.jpg",
+					};
+					assets.Add(asset);
+				}
+
+				properties.Add(prop);
 			}
 
-			return data;
+			return (properties, assets);
 		}
 	}
 }
