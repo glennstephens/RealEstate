@@ -18,12 +18,51 @@
                     </div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Portfolio Modal - Image -->
-                @if (Model.MainImageUrl != null)
-                {
-                <img class="img-fluid rounded mb-5" src="@Model.MainImageUrl" alt="">
-                }
-                <!-- Portfolio Modal - Text -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model.Property.Assets?.Count > 0)
+{
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            @for (var index = 0; index < Model.Property.Assets.Count; index++)
+            {
+                <li data-target="#carouselExampleIndicators" data-slide-to="@index" @(index == 0 ? "class=\"active\"" : "")></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @foreach (var asset in Model.Property.Assets)
+            {
+                <div class="carousel-item @(Model.Property.Assets.IndexOf(asset) == 0 ? "active" : "")">
+                    <img class="d-block w-100" src="@asset.ImageUrl" alt="">
+                    @if (asset.Description != null)
+                    {
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>@asset.Description</p>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+}
+
+<div class="row">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 <p>
                     Number of bathrooms: @Model.Property.NumberOfBathrooms<br />
                     Number of bedrooms: @Model.Property.NumberOfBedrooms<br />
