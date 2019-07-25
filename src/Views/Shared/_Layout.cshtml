@@ -65,7 +65,16 @@
                     @if (User.Identities.Any(u => u.IsAuthenticated))
                     {
                         <li class="nav-item mx-0 mx-lg-1">
-                            @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" } )
+                            <a asp-route="AdminMain" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Admin</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a asp-route="Logout" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a asp-route="ShowLogin" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Login</a>
                         </li>
                     }
 
@@ -76,25 +85,29 @@
 
     @if (Model.ShowMasterHeader)
     {
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Heading -->
-            <h1 class="masthead-heading text-uppercase mb-0">RealEstate Inc.</h1>
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Heading -->
+                <h1 class="masthead-heading text-uppercase mb-0">RealEstate Inc.</h1>
 
-            <!-- Icon Divider -->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
+                <!-- Icon Divider -->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="divider-custom-line"></div>
                 </div>
-                <div class="divider-custom-line"></div>
+
+                <!-- Masthead Subheading -->
+                <p class="masthead-subheading font-weight-light mb-0">Exclusive - Expensive - Extraterrestrial</p>
+
             </div>
-
-            <!-- Masthead Subheading -->
-            <p class="masthead-subheading font-weight-light mb-0">Exclusive - Expensive - Extraterrestrial</p>
-
-        </div>
-    </header>
+        </header>
+    }
+    else
+    {
+        <header class="p-3"></header>
     }
 
     <section class="page-section portfolio" id="portfolio">
@@ -173,8 +186,8 @@
                     Please wait...we're loading...wish we had some cloud power to speed things up!
                 </div>
                 @*<div class="modal-footer">
-                    Footer
-                </div>*@
+                        Footer
+                    </div>*@
             </div>
         </div>
     </div>

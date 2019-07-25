@@ -3,16 +3,20 @@ using RealEstate.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 
 namespace RealEstate
 {
 	public static class RealEstateHelpers
 	{
-		public static PropertyViewModel ToViewModel(this Property property) => new PropertyViewModel {
+		public static PropertyViewModel ToViewModel(this Property property, bool userIsAdmin = false) => new PropertyViewModel {
 			Property = property,
 			MainImageUrl = property.Assets.FirstOrDefault()?.ImageUrl,
-			ThumbnailUrl = property.Assets.FirstOrDefault()?.ThumbnailUrl
+			ThumbnailUrl = property.Assets.FirstOrDefault()?.ThumbnailUrl,
+			IsUserAdmin = userIsAdmin
 		};
+
+		public static bool IsUserAdmin(ClaimsPrincipal user) => user != null && user.IsInRole("Administrator");
 
 		internal static (List<Property> properties, List<PropertyAsset> assets) CreateProperties()
 		{
@@ -42,7 +46,7 @@ namespace RealEstate
 					var asset = new PropertyAsset {
 						Id = (propIndex - 1) * 2 + assetIndex,
 						//Property = prop,
-						PropertyId = prop.Id,
+						PropertyId = prop.Id.Value,
 						Description = $"Image {assetIndex} for property {propIndex}",
 						ImageUrl = $"/assets/demopropertyimages/property-{propIndex % 8}.jpg",
 						ThumbnailUrl = $"/assets/demopropertythumbnails/thumb-property-{propIndex % 8}.jpg",

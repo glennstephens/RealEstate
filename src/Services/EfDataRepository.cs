@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Data;
 using RealEstate.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -72,6 +73,30 @@ namespace RealEstate.Services
 			}
 
 			return properties.ToListAsync();
+		}
+
+		public async Task<Property> UpsertProperty(Property property, bool overwriteAssets)
+		{
+			// When updating a property and the assets should remain unchanged in the DB,
+			// read the existing assets and assign them to the property to be saved.
+			if (property.Id > 0 && !overwriteAssets)
+			{
+				_context.Entry<Property>(property).Collection(x => x.Assets).IsModified = false;
+			}
+
+			property.LastUpdatedUtc = DateTimeOffset.UtcNow;
+			var modifiedProperty = _context.Properties.Update(property);
+			await _context.SaveChangesAsync();
+
+			return modifiedProperty.Entity;
+		}
+
+		public async Task<Property> DeleteProperty(int id)
+		{
+			var existingProperty = _context.Find<Property>(id);
+			_context.Remove(existingProperty);
+			await _context.SaveChangesAsync();
+			return existingProperty;
 		}
 	}
 }

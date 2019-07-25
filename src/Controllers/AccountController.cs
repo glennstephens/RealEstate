@@ -14,8 +14,7 @@ namespace RealEstate.Controllers
 	[AllowAnonymous]
 	public class AccountController : Controller
 	{
-		[HttpGet]
-		[Route("login")]
+		[HttpGet("login", Name = "ShowLogin")]
 		public IActionResult Login()
 		{
 			var vm = new AccountViewModel {
@@ -25,8 +24,8 @@ namespace RealEstate.Controllers
 			return View(vm);
 		}
 
-		[HttpPost]
-		[Route("login")]
+		[HttpPost("login")]
+		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Login(string userName, string password, string returnUrl = null)
 		{
 			if (!string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
@@ -60,14 +59,13 @@ namespace RealEstate.Controllers
 				return RedirectToLocal(returnUrl);
 			}
 
-			return View();
+			return View(new AccountViewModel());
 		}
 
-		[HttpGet]
-		[Route("logout")]
+		[HttpGet("logout", Name = "Logout")]
 		public IActionResult Logout()
 		{
-			var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			_ = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 			return RedirectToAction("Index", "Home");
 		}
 
@@ -86,7 +84,7 @@ namespace RealEstate.Controllers
 
 		public IActionResult Forbidden()
 		{
-			return View();
+			return View(new AccountViewModel());
 		}
 	}
 }

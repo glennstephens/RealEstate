@@ -117,3 +117,12 @@
         </p>
     </div>
 </div>
+
+@if (Model.IsUserAdmin)
+{
+    <div class="row">
+        <div class="container text-center">
+            <a asp-route="EditProperty" asp-route-id="@Model.Property.Id" class="badge badge-primary">Edit</a>
+        </div>
+    </div>
+}

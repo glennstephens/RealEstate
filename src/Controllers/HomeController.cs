@@ -17,7 +17,7 @@ namespace RealEstate.Controllers
 
 		readonly IDataRepository _repo;
 
-		[HttpGet]
+		[HttpGet(Name ="Home")]
 		public async Task<IActionResult> Index()
 		{
 			var featuredProperties = await _repo.GetFeaturedProperties();

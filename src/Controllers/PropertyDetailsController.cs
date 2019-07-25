@@ -15,15 +15,24 @@ namespace RealEstate.Controllers
 
 		readonly IDataRepository _repo;
 
-
-		[Route("{propertyId}")]
-        public async Task<IActionResult> Details(int propertyId)
+		[HttpGet("{propertyId}", Name = "ShowPropertyFullDetails")]
+        public async Task<IActionResult> ShowPropertyFullDetails(int propertyId)
         {
 			var propertyDetails = await _repo.GetPropertyDetails(propertyId);
 
-			var vm = propertyDetails.ToViewModel();
+			var vm = propertyDetails.ToViewModel(RealEstateHelpers.IsUserAdmin(User));
 
-			return View(vm);
+			return View("Details", vm);
         }
-    }
+
+		[HttpGet("test/{foo}", Name = "ShowTest")]
+		public async Task<IActionResult> Test(int foo)
+		{
+			var propertyDetails = await _repo.GetPropertyDetails(1);
+
+			var vm = propertyDetails.ToViewModel(RealEstateHelpers.IsUserAdmin(User));
+
+			return View("Details", vm);
+		}
+	}
 }

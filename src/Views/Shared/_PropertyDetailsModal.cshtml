@@ -16,7 +16,7 @@
             <!-- Portfolio Modal - Image -->
             @if (Model.MainImageUrl != null)
             {
-            <img class="img-fluid rounded mb-5" src="@Model.MainImageUrl" alt="">
+            <img class="img-fluid rounded mb-5" src="@Model.ThumbnailUrl" alt="">
             }
             <!-- Portfolio Modal - Text -->
             <p>
@@ -25,7 +25,7 @@
             <p class="mb-5">
                 @Model.Property.Description
             </p>
-            @Html.ActionLink("Show all details", "Details", "PropertyDetails", new { propertyId = Model.Property.Id }, new { @class = "btn-link" })
+            <a asp-route="ShowPropertyFullDetails" class="btn-link">Show all details</a>
         </div>
     </div>
 </div>
