@@ -2,7 +2,7 @@
 {
 	public class PropertyAsset
 	{
-		public int Id { get; set; }
+		public int? Id { get; set; }
 		// This is not strictly required because we have a reference to the Property anyway,
 		// but when seeding data a weak foreign key reference must be specified.
 		// To avoid delaing with anonymous types, I just added this.

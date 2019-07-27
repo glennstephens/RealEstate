@@ -27,7 +27,7 @@
         @Html.TextBox("searchString", Model.SearchString, null, new { @class = "form-control", id = "searchInput" })
     </div>
     <input type="submit" value="Search" class="btn btn-primary col-auto" />&nbsp;
-    <input type="submit" id="clearSearchBtn" name="clear" value="Clear" class="btn btn-primary col-auto"/>
+    <a asp-route="GetProperties">Clear search</a>
     @Html.ActionLink("sort by date", "GetProperties", "PropertiesList", new { sortBy = "LastUpdatedUtc", sortAscending = !Model.SortAscending, searchString = Model.SearchString }, new { @class = "col-auto" })
     @Html.ActionLink("sort by name", "GetProperties", "PropertiesList", new { sortBy = "Name", sortAscending = !Model.SortAscending, searchString = Model.SearchString }, new { @class = "col-auto" })
     @Html.ActionLink("sort by price", "GetProperties", "PropertiesList", new { sortBy = "Price", sortAscending = !Model.SortAscending, searchString = Model.SearchString }, new { @class = "col-auto" })

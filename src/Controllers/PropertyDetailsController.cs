@@ -24,15 +24,5 @@ namespace RealEstate.Controllers
 
 			return View("Details", vm);
         }
-
-		[HttpGet("test/{foo}", Name = "ShowTest")]
-		public async Task<IActionResult> Test(int foo)
-		{
-			var propertyDetails = await _repo.GetPropertyDetails(1);
-
-			var vm = propertyDetails.ToViewModel(RealEstateHelpers.IsUserAdmin(User));
-
-			return View("Details", vm);
-		}
 	}
 }

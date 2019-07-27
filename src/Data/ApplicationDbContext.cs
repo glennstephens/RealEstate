@@ -13,6 +13,14 @@ namespace RealEstate.Data
 		{
 		}
 
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			base.OnConfiguring(optionsBuilder);
+			optionsBuilder
+				.EnableDetailedErrors(true)
+				.EnableSensitiveDataLogging(true);
+		}
+
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);

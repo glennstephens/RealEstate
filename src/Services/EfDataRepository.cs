@@ -13,6 +13,7 @@ namespace RealEstate.Services
 		public EfDataRepository(ApplicationDbContext context)
 		{
 			_context = context;
+			
 		}
 
 		readonly ApplicationDbContext _context;
@@ -24,6 +25,7 @@ namespace RealEstate.Services
 				.Include(p => p.Assets)
 				.OrderByDescending(r => r.LastUpdatedUtc)
 				.Take(6)
+				.AsNoTracking()
 				.ToListAsync();
 
 			return topProperties;
@@ -34,6 +36,7 @@ namespace RealEstate.Services
 			var propertyDetails = await _context
 				.Properties
 				.Include(p => p.Assets)
+				//.AsNoTracking()
 				.FirstOrDefaultAsync(r => r.Id == propertyId);
 
 			return propertyDetails;
@@ -72,18 +75,13 @@ namespace RealEstate.Services
 					break;
 			}
 
-			return properties.ToListAsync();
+			return properties
+				.AsNoTracking()
+				.ToListAsync();
 		}
 
-		public async Task<Property> UpsertProperty(Property property, bool overwriteAssets)
+		public async Task<Property> UpsertProperty(Property property)
 		{
-			// When updating a property and the assets should remain unchanged in the DB,
-			// read the existing assets and assign them to the property to be saved.
-			if (property.Id > 0 && !overwriteAssets)
-			{
-				_context.Entry<Property>(property).Collection(x => x.Assets).IsModified = false;
-			}
-
 			property.LastUpdatedUtc = DateTimeOffset.UtcNow;
 			var modifiedProperty = _context.Properties.Update(property);
 			await _context.SaveChangesAsync();
@@ -97,6 +95,11 @@ namespace RealEstate.Services
 			_context.Remove(existingProperty);
 			await _context.SaveChangesAsync();
 			return existingProperty;
+		}
+
+		public void StopTracking(Property existingProperty)
+		{
+			_context.Entry<Property>(existingProperty).State = EntityState.Detached;
 		}
 	}
 }

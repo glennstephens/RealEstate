@@ -19,19 +19,19 @@ namespace RealEstate.Controllers
 
 		[HttpGet("", Name = "GetProperties")]
 		[HttpPost("", Name = "GetProperties")]
-		public async Task<ActionResult> GetProperties(int? pageNumber, string searchString, string sortBy, bool sortAscending)
+		public async Task<ActionResult> GetProperties(int? pageNumber, string searchString, string sortBy, bool? sortAscending)
 		{
 			if (pageNumber == null || pageNumber <= 0)
 			{
 				pageNumber = 1;
 			}
 
-			var properties = await _repo.GetProperties(searchString, sortBy, sortAscending);
+			var properties = await _repo.GetProperties(searchString, sortBy, sortAscending ?? true);
 
 			var vm = new PropertyListViewModel {
 				CurrentPage = pageNumber.Value,
 				SearchString = searchString,
-				SortAscending = sortAscending,
+				SortAscending = sortAscending ?? true,
 				SortBy = sortBy
 			};
 
