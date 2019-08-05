@@ -76,7 +76,7 @@
         <label class="form-check-label" for="checkHasFloorboards">Floorboards</label>
     </div>
 
-    @if (Model.Property.Assets != null)
+    @if (Model.Property != null && Model.Property.Assets != null)
     {
         <div class="form-group m-4">
             @for (int assetIndex = 0; assetIndex < Model.Property.Assets.Count; assetIndex++)
