@@ -33,17 +33,15 @@ namespace RealEstate.Controllers
 				return RedirectToAction("Login", new AccountViewModel());
 			}
 
-			//Check the user name and password  
-			//Here can be implemented checking logic from the database  
-
-			if (userName == "Admin" && password == "password")
+			// For demo purposes we use a hardcoded username and password.
+			if (userName.ToLowerInvariant() == "admin" && password == "password")
 			{
 				const string Issuer = "https://realestate.com";
-				var claims = new List<Claim>();
-				claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String, Issuer));
-				claims.Add(new Claim(ClaimTypes.Role, "Administrator", ClaimValueTypes.String, Issuer));
+				var claims = new List<Claim> {
+					new Claim(ClaimTypes.Role, "Administrator", ClaimValueTypes.String, Issuer)
+				};
 
-				var userIdentity = new ClaimsIdentity("SuperSecureLogin");
+				var userIdentity = new ClaimsIdentity("NotSoSuperSecureLogin");
 				userIdentity.AddClaims(claims);
 				var userPrincipal = new ClaimsPrincipal(userIdentity);
 
