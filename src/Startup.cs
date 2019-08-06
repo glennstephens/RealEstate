@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace RealEstate
 {
@@ -34,20 +31,44 @@ namespace RealEstate
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-					.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
-					options =>
-					{
-						options.LoginPath = new PathString("/Login/");
-						options.AccessDeniedPath = new PathString("/Forbidden/");
-					});
-
-			// setup a policy for Administrators that we can Authorize against
-			services.AddAuthorization(options =>
+			// This enables the out of Personal Identifying Information (PII) in exceptions and error messages.
+			// This could for example be the tenant ID of our registered app.
+			// If something goes wrong it helps to see the real issue and not just "[PII hidden]" - that's why we turn it on while in debug mode.
+			if (_hostingEnv.IsDevelopment())
 			{
-				options.AddPolicy("AdministratorOnly", policy => policy.RequireRole("Administrator"));
+				Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
+			}
+
+			// Configure Azure AD.
+			services
+				.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+				.AddAzureAD(options => Configuration.Bind("AzureAd", options));
+
+			services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+			{
+				// The ASP.NET core templates are currently using Azure AD v1.0, and compute
+				// the authority (as {Instance}/{TenantID}). We want to use the Microsoft identity platform endpoint
+				options.Authority = options.Authority + "/v2.0/";
+
+				// Set the nameClaimType to be preferred_username.
+				// This change is needed because certain token claims from Azure AD v1.0 endpoint
+				// (on which the original .NET core template is based) are different in Microsoft identity platform endpoint.
+				// For more details see [ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
+				// and [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
+				options.TokenValidationParameters.NameClaimType = "preferred_username";
 			});
 
+			services.Configure<CookieAuthenticationOptions>(AzureADDefaults.CookieScheme, options => options.AccessDeniedPath = "/forbidden");
+
+			// Setup a policy for Administrators that we can Authorize against
+			// Groups will only be included in the id_token if the manifest has been modified and "groupMembershipClaims" has been set to "All" (Security & Office 365 groups) or "SecurityGroup".
+			var realEstateAdminGroupId = Configuration["RealEstateAdminGroupId"];
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("AdministratorOnly", policy => {
+					policy.RequireClaim("groups", realEstateAdminGroupId);
+				});
+			});
 
 			services.Configure<CookiePolicyOptions>(options =>
 			{
@@ -56,14 +77,11 @@ namespace RealEstate
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
-			services.AddDbContext<ApplicationDbContext>(options =>
-			{
-				options.UseSqlServer(Environment.GetEnvironmentVariable("UseAzureDBLiveConnection") == "true" ? Configuration.GetConnectionString("AzureDBLiveConnection") : Configuration.GetConnectionString("DefaultConnection"));
-			});
-
-			//services.AddDefaultIdentity<IdentityUser>()
-			//	.AddDefaultUI(UIFramework.Bootstrap4)
-			//	.AddEntityFrameworkStores<ApplicationDbContext>();
+			services.AddDbContext<ApplicationDbContext>(
+				options => options.UseSqlServer(
+					Environment.GetEnvironmentVariable("UseAzureDBLiveConnection") == "true" ? Configuration.GetConnectionString("AzureDBLiveConnection") : Configuration.GetConnectionString("DefaultConnection"),
+					providerOptions => providerOptions.EnableRetryOnFailure()
+				));
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
