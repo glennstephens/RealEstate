@@ -22,11 +22,13 @@ namespace RealEstate
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+		public Startup(IConfiguration configuration, IHostingEnvironment hostingEnv)
 		{
 			Configuration = configuration;
+			_hostingEnv = hostingEnv;
 		}
 
+		readonly IHostingEnvironment _hostingEnv;
 		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
@@ -56,7 +58,7 @@ namespace RealEstate
 
 			services.AddDbContext<ApplicationDbContext>(options =>
 			{
-				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+				options.UseSqlServer(Environment.GetEnvironmentVariable("UseAzureDBLiveConnection") == "true" ? Configuration.GetConnectionString("AzureDBLiveConnection") : Configuration.GetConnectionString("DefaultConnection"));
 			});
 
 			//services.AddDefaultIdentity<IdentityUser>()
