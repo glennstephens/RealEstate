@@ -2,31 +2,12 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscriptionId": {
-            "type": "string",
-            "defaultValue": "[subscription().subscriptionId]"
-        },
         "name": {
             "type": "string",
             "metadata": {
                 "description": "Must be globally unique. The site will be hosted at [name].azurewebsites.net"
             },
             "defaultValue": "learn-realestate"
-        },
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Defines the datacenter the app will be hosted in."
-              },
-              "defaultValue": "Central US",
-              "allowedValues": [
-                "Central US",
-                "North Europe",
-                "West Europe",
-                "East Asia",
-                "Brazil South",
-                "Australia Central"
-              ]
         },
         "hostingPlanName": {
             "type": "string",
@@ -35,13 +16,6 @@
               },
               "defaultValue": "ASP-Learn-RealEstate"
         },
-        "serverFarmResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Groups multiple resources for easier management. Must be unique within your subscription."
-            },
-            "defaultValue": "RGLearnRealEstate"
-        },
         "alwaysOn": {
             "type": "bool",
             "metadata": {
@@ -49,18 +23,15 @@
             },
             "defaultValue": false
         },
-        "sku": {
-            "type": "string",
-            "metadata": {
-                "description": "The tier of the App Service Plan. Free = shared environment, Standard = paid, Premium = commercial use. Note: The sandbox only supports 'Free'!"
-            },
-            "defaultValue": "Free"
-        },
         "skuCode": {
             "type": "string",
             "metadata": {
                 "description": "The SKU of the App Service Plan. For example, F1 is a free plan for development purposes. S1 is a paid plan with better hardware. Note: You cannot use S1 in the Sandbox!"
             },
+            "allowedValues": [
+                "F1",
+                "S1"
+            ],
             "defaultValue": "F1"
         },
         "currentStack": {
@@ -79,45 +50,17 @@
             "apiVersion": "2018-02-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "tags": {
                 " ProjectType": "LearnLive"
             },
             "properties": {
                 "name": "[parameters('name')]",
                 "siteConfig": {
-                    "appSettings": [
+                    "connectionStrings": [
                         {
-                            "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
-                            "value": "~2"
-                        },
-                        {
-                            "name": "XDT_MicrosoftApplicationInsights_Mode",
-                            "value": "default"
-                        },
-                        {
-                            "name": "DiagnosticServices_EXTENSION_VERSION",
-                            "value": "disabled"
-                        },
-                        {
-                            "name": "APPINSIGHTS_PROFILERFEATURE_VERSION",
-                            "value": "disabled"
-                        },
-                        {
-                            "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
-                            "value": "disabled"
-                        },
-                        {
-                            "name": "InstrumentationEngine_EXTENSION_VERSION",
-                            "value": "disabled"
-                        },
-                        {
-                            "name": "SnapshotDebugger_EXTENSION_VERSION",
-                            "value": "disabled"
-                        },
-                        {
-                            "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
-                            "value": "disabled"
+                            "name": "AzureDBLiveConnection",
+                            "value": "[you can get this from your SQL Database resource]"
                         }
                     ],
                     "metadata": [
@@ -128,7 +71,7 @@
                     ],
                     "alwaysOn": "[parameters('alwaysOn')]"
                 },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]",
                 "hostingEnvironment": "",
                 "clientAffinityEnabled": true
             }
@@ -137,7 +80,7 @@
             "apiVersion": "2018-02-01",
             "name": "[parameters('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "kind": "",
             "tags": {
                 " ProjectType": "LearnLive"
@@ -151,21 +94,7 @@
                 "hostingEnvironment": ""
             },
             "sku": {
-                "Tier": "[parameters('sku')]",
                 "Name": "[parameters('skuCode')]"
-            }
-        },
-        {
-            "apiVersion": "2015-05-01",
-            "name": "Insights-RealEstate",
-            "type": "microsoft.insights/components",
-            "location": "centralus",
-            "tags": {
-                " ProjectType": "LearnLive"
-            },
-            "properties": {
-                "ApplicationId": "[parameters('name')]",
-                "Request_Source": "IbizaWebAppExtensionCreate"
             }
         }
     ]
