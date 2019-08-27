@@ -50,7 +50,7 @@
                     "connectionStrings": [
                         {
                             "name": "AzureDBLiveConnection",
-                            "value": "[you can get this from your SQL Database resource]"
+                            "value": "(you can get this from your SQL Database resource)"
                         }
                     ],
                     "metadata": [
