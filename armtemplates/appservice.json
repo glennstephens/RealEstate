@@ -40,8 +40,14 @@
         },
         "currentStack": {
             "type": "string",
-            "defaultvalue":"dotnetcore"
-        }
+            "metadata": {
+              "description": "We're building a .NET Core app"
+            },
+            "defaultValue": "dotnetcore",
+            "allowedValues": [
+              "dotnetcore"
+            ]
+          }
     },
     "resources": [
         {
