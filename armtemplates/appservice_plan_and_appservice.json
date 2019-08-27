@@ -34,6 +34,9 @@
             "name": "[parameters('appServiceName')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+              ],
             "tags": {
                 " ProjectType": "LearnLive"
             },
@@ -43,13 +46,13 @@
                     "connectionStrings": [
                         {
                             "name": "AzureDBLiveConnection",
-                            "connectionString": "you can get this from your SQL Database resource",
+                            "connectionString": "get this from your SQL Database resource",
                             "type": "SQLAzure"
                         }
                     ],
                     "alwaysOn": false
                 },
-                "serverFarmId": "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
                 "hostingEnvironment": "",
                 "clientAffinityEnabled": true
             }
@@ -63,7 +66,6 @@
             "tags": {
                 " ProjectType": "LearnLive"
             },
-            "dependsOn": [],
             "properties": {
                 "name": "[parameters('hostingPlanName')]",
                 "workerSize": "0",
