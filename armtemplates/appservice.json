@@ -40,7 +40,7 @@
         },
         "currentStack": {
             "type": "string",
-            "value":"dotnetcore"
+            "defaultvalue":"dotnetcore"
         }
     },
     "resources": [
