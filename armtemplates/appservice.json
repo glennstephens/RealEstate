@@ -2,7 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
+        "appServiceName": {
             "type": "string",
             "metadata": {
                 "description": "Must be globally unique. The site will be hosted at [name].azurewebsites.net"
@@ -15,13 +15,6 @@
                 "description": "The name of the App Service Plan - we create a new one. The name must be unique within your subscription."
               },
               "defaultValue": "ASP-Learn-RealEstate"
-        },
-        "alwaysOn": {
-            "type": "bool",
-            "metadata": {
-                "description": "Keep the app loaded even when there's no traffic. It's required for continuous WebJobs or for WebJobs that are triggered using a CRON expression."
-            },
-            "defaultValue": false
         },
         "skuCode": {
             "type": "string",
@@ -38,14 +31,14 @@
     "resources": [
         {
             "apiVersion": "2018-02-01",
-            "name": "[parameters('name')]",
+            "name": "[parameters('appServiceName')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
             "tags": {
                 " ProjectType": "LearnLive"
             },
             "properties": {
-                "name": "[parameters('name')]",
+                "name": "[parameters('appServiceName')]",
                 "siteConfig": {
                     "connectionStrings": [
                         {
@@ -54,7 +47,7 @@
                             "type": "SQLAzure"
                         }
                     ],
-                    "alwaysOn": "[parameters('alwaysOn')]"
+                    "alwaysOn": false
                 },
                 "serverFarmId": "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]",
                 "hostingEnvironment": "",
