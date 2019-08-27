@@ -1,13 +1,16 @@
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "variables": {
+        "currentSubscriptionId":"[subscription().subscriptionId]"
+    },
     "parameters": {
         "subscriptionId": {
             "type": "string",
             "metadata": {
                 "description": "The Azure subscription we deploy into. By default, we use the current you're logged in to."
               },
-            "defaultValue": subscription().subscriptionId
+            "defaultValue": "[variables('currentSubscriptionId')]"
         },
         "name": {
             "type": "string",
