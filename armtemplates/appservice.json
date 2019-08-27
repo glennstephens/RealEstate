@@ -33,17 +33,7 @@
                 "S1"
             ],
             "defaultValue": "F1"
-        },
-        "currentStack": {
-            "type": "string",
-            "metadata": {
-              "description": "We're building a .NET Core app so no other selection allowed"
-            },
-            "defaultValue": "dotnetcore",
-            "allowedValues": [
-              "dotnetcore"
-            ]
-          }
+        }
     },
     "resources": [
         {
@@ -66,7 +56,7 @@
                     "metadata": [
                         {
                             "name": "CURRENT_STACK",
-                            "value": "[parameters('currentStack')]"
+                            "value": "dotnetcore"
                         }
                     ],
                     "alwaysOn": "[parameters('alwaysOn')]"
